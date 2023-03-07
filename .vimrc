@@ -2,12 +2,14 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+set tags+=~/.vim/systags
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'fatih/vim-go'
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 " 代码大纲
 Plugin 'majutsushi/tagbar'
 " 注释插件，cc 为注释，cu 为取消注释
@@ -16,6 +18,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 " go 代码跳转
 Plugin 'dgryski/vim-godef'
+" themes
+Plugin 'flazz/vim-colorschemes'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -119,6 +123,9 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
+" 光标行列定位
+set cursorline cursorcolumn
+
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en'
 set langmenu=en
@@ -207,7 +214,13 @@ try
 catch
 endtry
 
+" 提示的配色
+highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
+highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
+
 set background=dark
+
+colorscheme molokai_dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
